@@ -28,8 +28,9 @@ static void MDAS9_rxTask() {
 
 	while (1) {
 		const int rxBytes = uart_read_bytes( UART_MDAS9, data, RX_BUF_SIZE, 100 / portTICK_RATE_MS);
-		// ESP_LOGI("APP", "%s", (const char *)data );
-		// ESP_LOGI( "GO_RX", "%d", rxBytes );
+		ESP_LOGI( "GO_RX", "%d", rxBytes );
+		ESP_LOGI("GO_RX", "Received Data (Hex):");
+		ESP_LOG_BUFFER_HEX("GO_RX", data, rxBytes);
       // MDAS9
       if(rxBytes == 37 ) {
 			// ESP_LOGI("MDAS_9", "L:%d DATA: %x %x REC: %x STATUS: %x", rxBytes, data[0], data[1], data[22], data[23]);
